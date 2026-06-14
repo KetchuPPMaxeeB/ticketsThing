@@ -2,7 +2,7 @@ const pool = require('./pool');
 
 async function getAllWorkers() {
     const result = await pool.query('SELECT * FROM workers');
-    return result.rows; // я опять боюсь что не смогу применить знания на практике. Вот я знаю что от pool я получаю сырой запрос, а .raw формирует его в более понятный вид, но все равно не понятно где ещё это применять, для меня это выглядит как исключительная функция исключительно для могего случая
+    return result.rows;
 };
 
 async function getWorkerByID(id) {
