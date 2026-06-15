@@ -2,12 +2,12 @@ const cdb = require('../models/clientsMod');
 
 async function getAllClients(req, res) {
     const clients = await cdb.getAllClients();
-    res.render('client', { client: clients });
+    res.render('clients', { clients: clients });
 };
 
 async function getClientByID(req, res) {
     const clients = await cdb.getClientByID(req.params.id);
-    res.render('client', { clients: clients });
+    res.render('clients', { clients: clients });
 };
 
 async function createClient(req, res) {

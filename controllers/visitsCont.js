@@ -1,4 +1,5 @@
 const vdb = require('../models/visitsMod');
+const vwdb = require('../models/visits_workersMod');
 
 async function getAllVisits(req, res) {
     const visits = await vdb.getAllVisits();
@@ -11,7 +12,8 @@ async function getVisitByID(req, res) {
 };
 
 async function createVisit(req, res) {
-    const visit = await vdb.createVisit(req.params.ticket_id, req.body.visit_date); // тут же ticket_id из другого какого то места получать вроде надо да? Или из body?
+    const visit = await vdb.createVisit(req.params.ticket_id, req.body.visit_date);
+    await vwdb.createVW(visit[0].id, req.body.worker_id);
     res.redirect('/visits');
 };
 

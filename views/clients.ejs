@@ -1,0 +1,9 @@
+<%- include ('head') %>
+
+<ul>
+<% clients.forEach (client => { %>
+    <li><%= client.name %></li>
+<% }) %>
+</ul>
+
+<%- include ('foot') %>

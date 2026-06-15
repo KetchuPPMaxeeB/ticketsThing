@@ -1,0 +1,9 @@
+<%- include ('head') %>
+
+<ul>
+    <% workers.forEach(worker => { %>
+        <li><%= worker.name %></li>
+    <% }) %>
+</ul>
+
+<%- include ('foot') %>

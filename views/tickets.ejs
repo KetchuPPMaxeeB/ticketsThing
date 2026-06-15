@@ -1,0 +1,15 @@
+<%- include ('head') %>
+
+<a href="/tickets/new">Создать тикет</a>
+
+<% tickets.forEach(ticket => { %>
+  <section class="tickets">
+    <article class="tickets-item">
+      <h2 class="ticket-title">Тикет №<%= ticket.id %></h2>
+      <p class="ticket-problem"><%= ticket.problem %></p>
+      <a href="/tickets/<%= ticket.id %>" class="ticket-more-btn">Подробнее</a>
+    </article>
+  </section>
+<% }) %>
+
+<%- include ('foot') %>

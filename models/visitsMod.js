@@ -11,7 +11,7 @@ async function getVisitByID(id) {
 };
 
 async function createVisit(ticket_id, visit_date) {
-    const result = await pool.query('INSERT INTO visits (ticket_id, visit_date) VALUES ($1, $2)', [ticket_id, visit_date]);
+    const result = await pool.query('INSERT INTO visits (ticket_id, visit_date) VALUES ($1, $2) RETURNING id', [ticket_id, visit_date]);
     return result.rows;
 };
 
