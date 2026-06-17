@@ -1,0 +1,40 @@
+<%- include ('head') %>
+
+<form action="/tickets/<%= ticket[0].id %>" method="post">
+    <div class="ticket-details">
+        <legend>Тикет №<%= ticket[0].id %></legend>
+
+        <div class="problem-item">
+            <label for="ticket-problem">Проблема</label>
+            <p id="ticket-problem"><%= ticket[0].problem %></p>
+        </div>
+
+        <div class="problem-item">
+            <label for="client-name">Имя клиента</label>
+            <p id="client-name"><%= client[0].name %></p>
+        </div>
+        
+        <div class="problem-item">
+            <label for="phone-num">Номер телефона клиента</label>
+            <p id="phone-num"><%= client[0].phone_num %></p>
+            
+        </div>
+
+    </div>
+
+    <fieldset>
+        <legend>Решение тикета</legend>
+
+        <label for="workers">Выберите бригаду</label>
+        <select name="workers" id="workers">
+            <option value="" class="workers-option">Выберите бригаду</option>
+            <% workers.forEach(worker => { %>
+                <option value="<%= worker.id %>" class="workers-option"><%= worker.name %></option>
+            <% }) %>
+        </select>
+
+        <button type="submit" id="ticket-create">Подтвердить</button>
+    </fieldset>
+</form>
+
+<%- include ('foot') %>

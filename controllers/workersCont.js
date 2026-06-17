@@ -1,7 +1,7 @@
 const wdb = require('../models/workersMod');
 
-async function getAllWorkers(req, res) {
-    const workers = await wdb.getAllWorkers();
+async function getAllWorkersWithStats(req, res) {
+    const workers = await wdb.getAllWorkersWithStats();
     res.render('workers', { workers: workers });
 };
 
@@ -25,4 +25,4 @@ async function deleteWorker(req, res) {
     res.redirect('/workers');
 };
 
-module.exports = { getAllWorkers, getWorkerByID, createWorker, updateWorker, deleteWorker };
+module.exports = { getAllWorkersWithStats, getWorkerByID, createWorker, updateWorker, deleteWorker };

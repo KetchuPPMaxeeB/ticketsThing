@@ -1,7 +1,8 @@
 <%- include ('head') %>
+<h2>Последние выезды</h2>
 <ul>
     <% visits.forEach(visit => { %>
-        <li><%= visit.visit_date %></li>
+        <li><%= new Date(visit.visit_date).toLocaleString('ru-RU') %></li>
         <% }) %>
     </ul>
     

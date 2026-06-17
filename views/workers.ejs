@@ -2,7 +2,11 @@
 
 <ul>
     <% workers.forEach(worker => { %>
-        <li><%= worker.name %></li>
+        <li>
+            <h2><%= worker.name %></h2>
+            <p><%= worker.profession %></p>
+            <p>Выездов: <%= worker.visits_count %></p>
+        </li>
     <% }) %>
 </ul>
 

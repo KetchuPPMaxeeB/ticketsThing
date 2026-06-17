@@ -1,15 +1,16 @@
 <%- include ('head') %>
 
-<a href="/tickets/new">Создать тикет</a>
+<a href="/tickets/new" id="ticket-create">Создать тикет</a>
 
-<% tickets.forEach(ticket => { %>
-  <section class="tickets">
+<section class="tickets">
+    <% tickets.forEach(ticket => { %>
     <article class="tickets-item">
       <h2 class="ticket-title">Тикет №<%= ticket.id %></h2>
       <p class="ticket-problem"><%= ticket.problem %></p>
+      <p class="<%= ticket.status === 'Открыт' ? 'ticket-status-open' : ticket.status === 'Ожидание' ? 'ticket-status-wait' : 'ticket-status-closed' %>"><%= ticket.status %></p>
       <a href="/tickets/<%= ticket.id %>" class="ticket-more-btn">Подробнее</a>
     </article>
-  </section>
-<% }) %>
+    <% }) %>
+</section>
 
 <%- include ('foot') %>

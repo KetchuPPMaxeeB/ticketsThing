@@ -10,8 +10,8 @@ async function getVisitByID(id) {
     return result.rows;
 };
 
-async function createVisit(ticket_id, visit_date) {
-    const result = await pool.query('INSERT INTO visits (ticket_id, visit_date) VALUES ($1, $2) RETURNING id', [ticket_id, visit_date]);
+async function createVisit(ticket_id) {
+    const result = await pool.query('INSERT INTO visits (ticket_id, visit_date) VALUES ($1, NOW()) RETURNING id', [ticket_id]);
     return result.rows;
 };
 

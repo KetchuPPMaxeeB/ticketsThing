@@ -1,0 +1,20 @@
+<%- include ('head') %>
+
+<form action="/tickets" method="post">
+    <fieldset>
+        <legend>Создание тикета</legend>
+
+        <label for="ticket-problem">Опишите проблему</label>
+        <input type="text" name="ticket-problem" id="ticket-problem"> 
+
+        <label for="phone-num">Номер телефона</label>
+        <input type="tel" name="phone-num" id="phone-num">
+
+        <label for="">Ваше имя</label>
+        <input type="text" name="name" id="client-name">
+
+        <button type="submit" id="ticket-create">Создать</button>
+    </fieldset>
+</form>
+
+<%- include ('foot') %>

@@ -10,8 +10,8 @@ async function getTicketByID(id) {
     return result.rows;
 };
 
-async function createTicket(client_id, problem, status) {
-    const result = await pool.query('INSERT INTO tickets (client_id, problem, status, creation_date) VALUES ($1, $2, $3, NOW())', [client_id, problem, status]);
+async function createTicket(client_id, problem) {
+    const result = await pool.query('INSERT INTO tickets (client_id, problem, status, creation_date) VALUES ($1, $2, $3, NOW())', [client_id, problem, 'Открыто']);
     return result.rows;
 };
 
@@ -25,4 +25,9 @@ async function deleteTicket(id) {
     return result.rows;
 };
 
-module.exports = { getAllTickets, getTicketByID, createTicket, updateTicket, deleteTicket };
+async function updateTicketStatus(id, status) {
+    const result = await pool.query('UPDATE tickets SET status=$1 WHERE id=$2', [status, id]);
+    return result.rows;
+};
+
+module.exports = { getAllTickets, getTicketByID, createTicket, updateTicket, deleteTicket, updateTicket, updateTicketStatus };

@@ -1,10 +1,5 @@
 const pool = require('./pool');
 
-async function getAllWorkers() {
-    const result = await pool.query('SELECT * FROM workers');
-    return result.rows;
-};
-
 async function getWorkerByID(id) {
     const result = await pool.query('SELECT * FROM workers WHERE id=$1', [id]);
     return result.rows;
@@ -25,4 +20,9 @@ async function deleteWorker(id) {
     return result.rows;
 };
 
-module.exports = { getAllWorkers, getWorkerByID, createWorker, updateWorker, deleteWorker };
+async function getAllWorkersWithStats() {
+    const result = await pool.query('SELECT workers.*, COUNT(visits_workers.visit_id) as visits_count FROM workers LEFT JOIN visits_workers ON workers.id = visits_workers.worker_id GROUP BY workers.id');
+    return result.rows;
+};
+
+module.exports = { getWorkerByID, createWorker, updateWorker, deleteWorker, getAllWorkersWithStats };

@@ -11,7 +11,7 @@ async function getClientByID(id) {
 };
 
 async function createClient(name, phone_num) {
-    const result = await pool.query('INSERT INTO clients (name, phone_num) VALUES ($1, $2)', [name, phone_num]);
+    const result = await pool.query('INSERT INTO clients (name, phone_num) VALUES ($1, $2) RETURNING id', [name, phone_num]);
     return result.rows;
 };
 
